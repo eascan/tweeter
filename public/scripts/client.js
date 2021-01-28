@@ -35,84 +35,83 @@ $(document).ready(function() {
 
 // render each tweet form database
 
-const createTweetElement = function (tweetObj) {
-  const tweetEL = `
-  
-  <article class="tweetArticle">
+  const createTweetElement = function (tweetObj) {
+    const tweetEL = `
+    
+    <article class="tweetArticle">
 
-      <header class=allTweets>
-        <div class="posterName">
-          <img src="${tweetObj.user.avatars}" class="male">
-          <p class=user>${tweetObj.user.name}</p>
+        <header class=allTweets>
+          <div class="posterName">
+            <img src="${tweetObj.user.avatars}" class="male">
+            <p class=user>${tweetObj.user.name}</p>
+          </div>
+          <div class="username">
+            <p>${tweetObj.user.handle}</p>
+          </div>
+        </header>
+        <div class="tweetContent">
+          <p class="userTweet">${tweetObj.content.text}</p>
+          <p class="empty"></p>
         </div>
-        <div class="username">
-          <p>${tweetObj.user.handle}</p>
-        </div>
-      </header>
-      <div class="tweetContent">
-        <p class="userTweet">${tweetObj.content.text}</p>
-        <p class="empty"></p>
-      </div>
-      <footer>
-        <div class="datePosted">
-        ${tweetObj.created_at}
-        </div>
-        <div>
-          <img src="/images/shareIcons.png" class="share">
-        </div>
-      </footer>
+        <footer>
+          <div class="datePosted">
+          ${tweetObj.created_at}
+          </div>
+          <div>
+            <img src="/images/shareIcons.png" class="share">
+          </div>
+        </footer>
 
-    </article>
-    `;
+      </article>
+      `;
 
-    return tweetEL;
+      return tweetEL;
 
-}
-
-const renderTweets = function(tweets) {
-  // loops through tweets
-
-  for (const tweet of tweets) {
-    // calls createTweetElement for each tweet
-    const newTweet = createTweetElement(tweet);
-
-    // takes return value and appends it to the tweets container
-    $("#tweets").append(newTweet);
   }
-}
 
-renderTweets(data);
-// const $tweet = createTweetElement(userData);
+  const renderTweets = function(tweets) {
+    // loops through tweets
 
-// // Test / driver code (temporary)
-// console.log($tweet); // to see what it looks like
+    for (const tweet of tweets) {
+      // calls createTweetElement for each tweet
+      const newTweet = createTweetElement(tweet);
 
+      // takes return value and appends it to the tweets container
+      $("#tweets").append(newTweet);
+    }
+  }
 
-    // --- our code goes here ---
-
-    $("#writeTweet").on("submit", function (event) {
-      // preventing browser from default submitting
-      event.preventDefault();
-
-      
-      // read data from input text, taret the textarea
-      const textArea = $(this).find("#tweet-text");
-
-      const userInput = textArea.val();
-
-      // console.log(userInput.length);
-      //will need to empty the tweets section later
+  renderTweets(data);
 
 
-      // using DOM traversal to go up to ancestor form and down to counter
+  $("#writeTweet").on("submit", function (event) {
+    // preventing browser from default submitting
+    event.preventDefault();
 
-      
-      // console.log(counter);
-      
-      
-      
-      //empty user input area after submission:
-      textArea.val("");
+    
+    // read data from input text, target the textarea
+    const textArea = $(this).find("#tweet-text");
+    
+    // the actual characters user types
+    // const userInput = textArea.val();
 
-    })
+    const userInput = textArea.serialize();
+
+    
+    // Ajax submission GET method
+    
+
+
+    //will need to empty the tweets section later
+
+
+   
+
+  
+    
+    
+    //empty user input area after submission:
+    textArea.val("");
+
+  })
 })
