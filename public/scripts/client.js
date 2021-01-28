@@ -97,7 +97,6 @@ $(document).ready(function() {
 
   }
 
-  loadTweets();
 
   $("#writeTweet").on("submit", function (event) {
     // preventing browser from default submitting
@@ -129,15 +128,13 @@ $(document).ready(function() {
         console.log("Request submitted")
       })
 
+    //empty the tweets section
+    $("#tweets").empty();
 
-    //will need to empty the tweets section later
+    // make AJAX GET request upon submit to update tweets
 
+    loadTweets();
 
-   
-
-  
-    
-    
     //empty user input area after submission:
     textArea.val("");
 
