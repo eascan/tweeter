@@ -33,6 +33,12 @@ const data = [
 
 $(document).ready(function() {
 
+  const escape =  function(str) {
+    let div = document.createElement('div');
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
+  }
+
 // render each tweet form database
 
   const createTweetElement = function (tweetObj) {
@@ -50,7 +56,7 @@ $(document).ready(function() {
           </div>
         </header>
         <div class="tweetContent">
-          <p class="userTweet">${tweetObj.content.text}</p>
+          <p class="userTweet">${escape(tweetObj.content.text)}</p>
           <p class="empty"></p>
         </div>
         <footer>
@@ -97,20 +103,18 @@ $(document).ready(function() {
 
   }
 
+  loadTweets();
 
   $("#writeTweet").on("submit", function (event) {
     // preventing browser from default submitting
     event.preventDefault();
 
-    
     // read data from input text, target the textarea
     const textArea = $(this).find("#tweet-text");
-    
-    // the actual characters user types
-    // const userInput = textArea.val();
 
+    // serialize user input to send to server
     const userInput = textArea.serialize();
- 
+  
     // conditional statement to check for empty or length submissions
     if (textArea.val() === "" || textArea.val() === null) {
       return alert("Please enter a tweet!")
@@ -118,31 +122,33 @@ $(document).ready(function() {
       return alert("Your tweet has too many characters!")
     }
     
-    // Ajax submission GET method
+    // Ajax submission post method
     $.ajax({
       url: "/tweets",
       method: 'POST',
       data: userInput
     })
       .done(() => {
-        console.log(`Successful submission`)
+        console.log(`Successful submission`);
+
+        //empty the tweets section
+        $("#tweets").empty();
+        
+        //empty user input area after submission:
+        textArea.val("");
+
+        //resest counter to 140
+        $(this).find(".counter").text("140");
+
+        // make AJAX GET request upon submit to update tweets
+        loadTweets();
       })
       .fail(() => {
         console.log("There was an error submitting the tweet!")
       })
       .always(() => {
         console.log("Request submitted")
-      })
-
-    //empty the tweets section
-    $("#tweets").empty();
-
-    // make AJAX GET request upon submit to update tweets
-
-    loadTweets();
-
-    //empty user input area after submission:
-    textArea.val("");
+      }) 
 
   })
 })
