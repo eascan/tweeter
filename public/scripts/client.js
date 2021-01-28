@@ -99,7 +99,20 @@ $(document).ready(function() {
 
     
     // Ajax submission GET method
-    
+    $.ajax({
+      url: "/tweets",
+      method: 'POST',
+      data: userInput
+    })
+      .done(() => {
+        console.log(`Successful submission`)
+      })
+      .fail(() => {
+        console.log("There was an error submitting the tweet!")
+      })
+      .always(() => {
+        console.log("Request submitted")
+      })
 
 
     //will need to empty the tweets section later
