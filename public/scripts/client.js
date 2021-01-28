@@ -110,7 +110,13 @@ $(document).ready(function() {
     // const userInput = textArea.val();
 
     const userInput = textArea.serialize();
-
+ 
+    // conditional statement to check for empty or length submissions
+    if (textArea.val() === "" || textArea.val() === null) {
+      return alert("Please enter a tweet!")
+    } else if (textArea.val().length > 140) {
+      return alert("Your tweet has too many characters!")
+    }
     
     // Ajax submission GET method
     $.ajax({
