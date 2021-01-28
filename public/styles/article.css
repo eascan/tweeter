@@ -1,0 +1,118 @@
+#tweets {
+  width: 100%;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+article {
+  width: 90%;
+  margin-top: 30px;
+  border-color: #555149;
+  border-style: solid;
+  border-bottom-width: 5px;
+  border-top-width: 5px;
+  border-left-width: 5px;
+  border-right-width: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+article:hover {
+  box-shadow: 8px 8px #C5CCE4;
+}
+
+.allTweets {
+  width: 100%;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.tweetArticle > .allTweets > .username {
+  visibility: hidden;
+}
+
+.tweetArticle:hover > .allTweets > .username {
+  visibility: visible;
+}
+
+.posterName {
+  margin-left: 15px;
+}
+
+.username {
+  font-weight: bold;
+  margin-right: 21px;
+  color: #C5CCE4;
+}
+
+.tweetContent {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.userTweet {
+  width: 90%;
+  margin-top: 0px;
+  margin-bottom: 0px;
+
+}
+
+p {
+  text-align: center;
+}
+
+.empty {
+  
+  height: 10px;
+  width: 96.5%;
+  border-color: #555149;
+  border-top-width: 5px;
+  border-bottom-width: 0px;
+  border-left-width: 0px;
+  border-right-width: 0px;
+  border-style: solid;
+  margin-bottom: 0px;
+}
+
+.posterName {
+  display: flex;
+  align-items: center;
+
+}
+
+.user {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.male {
+  height: 55px;
+  width: 55px;
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.share {
+  width: 80px;
+  height: 25px;
+  margin-right: 20px;
+  margin-bottom: 25px;
+}
+
+.datePosted{
+  font-size: 15px;
+  margin-left: 25px;
+  margin-top: 5px;
+}
