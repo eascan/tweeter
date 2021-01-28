@@ -81,8 +81,23 @@ $(document).ready(function() {
     }
   }
 
-  renderTweets(data);
+  // function to make a GET requests and load the tweet
+  const loadTweets = function () {
 
+    $.ajax({
+      url: "/tweets",
+      method: "GET",
+    })
+      .done((result) => {
+        renderTweets(result);
+      })
+      .fail(() => {
+        console.log("There was an error getting tweets")
+      })
+
+  }
+
+  loadTweets();
 
   $("#writeTweet").on("submit", function (event) {
     // preventing browser from default submitting
