@@ -77,7 +77,7 @@ $(document).ready(function() {
       const newTweet = createTweetElement(tweet);
 
       // takes return value and appends it to the tweets container
-      $("#tweets").append(newTweet);
+      $("#tweets").prepend(newTweet);
     }
   }
 
