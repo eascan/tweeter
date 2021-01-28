@@ -27,6 +27,8 @@
 
   <link rel="stylesheet" href="/styles/article.css" type="text/css" />
 
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
   <!-- External JS -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
@@ -67,6 +69,11 @@
       <section class="new-tweet">
         <!-- <h2>Compose Tweet</h2> -->
         <form method="POST" action="/tweets/" id="writeTweet">
+          <div id="err" style="display:none">
+            <i class="material-icons">warning</i>
+            <p class="errMsg"></p>
+            <i class="material-icons">warning</i>
+          </div>
           <div class="input">
             <label for="tweet-text">What are you humming about?</label>
             <textarea name="text" id="tweet-text"></textarea>

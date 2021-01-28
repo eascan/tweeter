@@ -30,78 +30,84 @@ const data = [
   }
 ]
 
+//HELPER FUNCTIONS
 
-$(document).ready(function() {
+// escape userinput
+const escape =  function(str) {
+  let div = document.createElement('div');
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+}
 
-  const escape =  function(str) {
-    let div = document.createElement('div');
-    div.appendChild(document.createTextNode(str));
-    return div.innerHTML;
-  }
 
 // render each tweet form database
 
-  const createTweetElement = function (tweetObj) {
-    const tweetEL = `
-    
-    <article class="tweetArticle">
+const createTweetElement = function (tweetObj) {
+  const tweetEL = `
+  
+  <article class="tweetArticle">
 
-        <header class=allTweets>
-          <div class="posterName">
-            <img src="${tweetObj.user.avatars}" class="male">
-            <p class=user>${tweetObj.user.name}</p>
-          </div>
-          <div class="username">
-            <p>${tweetObj.user.handle}</p>
-          </div>
-        </header>
-        <div class="tweetContent">
-          <p class="userTweet">${escape(tweetObj.content.text)}</p>
-          <p class="empty"></p>
+      <header class=allTweets>
+        <div class="posterName">
+          <img src="${tweetObj.user.avatars}" class="male">
+          <p class=user>${tweetObj.user.name}</p>
         </div>
-        <footer>
-          <div class="datePosted">
-          ${tweetObj.created_at}
-          </div>
-          <div>
-            <img src="/images/shareIcons.png" class="share">
-          </div>
-        </footer>
+        <div class="username">
+          <p>${tweetObj.user.handle}</p>
+        </div>
+      </header>
+      <div class="tweetContent">
+        <p class="userTweet">${escape(tweetObj.content.text)}</p>
+        <p class="empty"></p>
+      </div>
+      <footer>
+        <div class="datePosted">
+        ${tweetObj.created_at}
+        </div>
+        <div>
+          <img src="/images/shareIcons.png" class="share">
+        </div>
+      </footer>
 
-      </article>
-      `;
+    </article>
+    `;
 
-      return tweetEL;
+    return tweetEL;
 
+}
+
+const renderTweets = function(tweets) {
+  // loops through tweets
+
+  for (const tweet of tweets) {
+    // calls createTweetElement for each tweet
+    const newTweet = createTweetElement(tweet);
+
+    // takes return value and appends it to the tweets container
+    $("#tweets").prepend(newTweet);
   }
+}
 
-  const renderTweets = function(tweets) {
-    // loops through tweets
+// function to make a GET requests and load the tweet
+const loadTweets = function () {
 
-    for (const tweet of tweets) {
-      // calls createTweetElement for each tweet
-      const newTweet = createTweetElement(tweet);
-
-      // takes return value and appends it to the tweets container
-      $("#tweets").prepend(newTweet);
-    }
-  }
-
-  // function to make a GET requests and load the tweet
-  const loadTweets = function () {
-
-    $.ajax({
-      url: "/tweets",
-      method: "GET",
+  $.ajax({
+    url: "/tweets",
+    method: "GET",
+  })
+    .done((result) => {
+      renderTweets(result);
     })
-      .done((result) => {
-        renderTweets(result);
-      })
-      .fail(() => {
-        console.log("There was an error getting tweets")
-      })
+    .fail(() => {
+      console.log("There was an error getting tweets")
+    })
 
-  }
+}
+
+
+$(document).ready(function() {
+
+
 
   loadTweets();
 
@@ -117,9 +123,15 @@ $(document).ready(function() {
   
     // conditional statement to check for empty or length submissions
     if (textArea.val() === "" || textArea.val() === null) {
-      return alert("Please enter a tweet!")
+      const errorMsg = $(this).find(".errMsg");
+      $("#err").slideDown("slow");
+      return errorMsg.text("Please enter a tweet!")
     } else if (textArea.val().length > 140) {
-      return alert("Your tweet has too many characters!")
+      const errorMsg = $(this).find(".errMsg");
+      $("#err").slideDown("slow");
+      return errorMsg.text("You passed the character limit!")
+    } else {
+      $("#err").hide();
     }
     
     // Ajax submission post method

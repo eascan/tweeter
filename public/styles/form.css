@@ -5,6 +5,21 @@ form {
   align-items: flex-start;
 }
 
+#err {
+  width: 100%;
+  height: 1.4em;
+  margin-top: 1em;
+  border: 0.15em solid red;
+  color:crimson;
+  display: flex;
+  justify-content: space-evenly;
+
+}
+
+.errMsg {
+  margin-top: 0em;
+}
+
 .input {
   width: 100%;
   display: flex;
