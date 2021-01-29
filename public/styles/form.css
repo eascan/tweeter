@@ -49,10 +49,7 @@ label {
   display:flex;
   flex-direction: row;
   justify-content: space-between;
-  /* justify-content: space-between; */
   align-items: center;
-  /* gap: 18.5em; */
- 
 }
 
 .counter {
@@ -70,7 +67,6 @@ label {
   font-family: 'Bungee', cursive;
   color: #FFFFFF;
   font-size: 20px;
-
 }
 
 .counter.red {
