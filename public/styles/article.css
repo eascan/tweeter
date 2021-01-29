@@ -42,6 +42,14 @@ article:hover {
   visibility: visible;
 }
 
+.tweetArticle footer img {
+  visibility: hidden;
+}
+
+.tweetArticle:hover footer img {
+  visibility: visible;
+}
+
 .posterName {
   margin-left: 15px;
 }

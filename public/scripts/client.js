@@ -62,7 +62,7 @@ const createTweetElement = function (tweetObj) {
       </div>
       <footer>
         <div class="datePosted">
-        ${tweetObj.created_at}
+        ${jQuery.timeago(tweetObj.created_at)}
         </div>
         <div>
           <img src="/images/shareIcons.png" class="share">

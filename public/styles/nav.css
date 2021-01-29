@@ -2,6 +2,8 @@ nav {
   height: 120px;
   background-color: #d89923;
   background-image: url("https://www.transparenttextures.com/patterns/asfalt-light.png");
+  padding-right: 0.5em;
+  padding-left: 0.5em;
 
   position: -webkit-sticky;
   position: sticky;
@@ -26,6 +28,11 @@ nav {
 
 .tweet {
   color: #FFFFFF;
+  background-color: #d89923;
+  border-bottom: 0px;
+  border-top: 0px;
+  border-right: 0px;
+  border-left: 0px;
   
 }
 
@@ -57,5 +64,8 @@ nav {
     background-image: none;
   }
 
+  .tweet {
+    background-color: #4056A1;
+  }
 
 }
