@@ -39,6 +39,8 @@
 
   <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
 
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0' />
+
 </head>
 
 
@@ -55,47 +57,52 @@
     </div>
   </nav>
 
-  <header class="profile">
-    <div class="avatar">
-      <img src="/images/profile-hex.png">
-    </div>
-    <div class="name">
-      <p><strong>Your</strong> Name</p>
-    </div>
-  </header>
-  <!-- Page-specific (main) content here -->
-  <div class="content">
-    <main class="container">
-      <section class="new-tweet">
-        <!-- <h2>Compose Tweet</h2> -->
-        <form method="POST" action="/tweets/" id="writeTweet">
-          <div id="err" style="display:none">
-            <i class="material-icons">warning</i>
-            <p class="errMsg"></p>
-            <i class="material-icons">warning</i>
-          </div>
-          <div class="input">
-            <label for="tweet-text">What are you humming about?</label>
-            <textarea name="text" id="tweet-text"></textarea>
-          </div>
-          <div class="footer">
+  <div class="profile-content">
+    <header class="profile">
+      <div class="avatar">
+        <img src="/images/profile-hex.png">
+      </div>
+      <div class="name">
+        <p><strong>Amy</strong> Mansell</p>
+      </div>
+    </header>
+    <!-- Page-specific (main) content here -->
 
-            <button type="submit" class="button1">Tweet</button>
-            <div class="counter">
-              <output name="counter" for="tweet-text">140</output>
-            </div>
-          </div>
+    <div class="wrap-content-tweets">
+      <div class="content">
+        <main class="container">
+          <section class="new-tweet">
+            <!-- <h2>Compose Tweet</h2> -->
+            <form method="POST" action="/tweets/" id="writeTweet">
+              <div id="err" style="display:none">
+                <i class="material-icons">warning</i>
+                <p class="errMsg"></p>
+                <i class="material-icons">warning</i>
+              </div>
+              <div class="input">
+                <label for="tweet-text">What are you humming about?</label>
+                <textarea name="text" id="tweet-text"></textarea>
+              </div>
+              <div class="footer">
+
+                <button type="submit" class="button1">Tweet</button>
+                <div class="counter">
+                  <output name="counter" for="tweet-text">140</output>
+                </div>
+              </div>
+      </div>
+      </form>
+      </section>
+
+      <!-- section for tweets -->
+      <section id="tweets">
+
+      </section>
+
+
+      </main>
+    </div>
   </div>
-  </form>
-  </section>
-
-  <!-- section for tweets -->
-  <section id="tweets">
-
-  </section>
-
-
-  </main>
   </div>
 </body>
 
