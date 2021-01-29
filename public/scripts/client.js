@@ -1,34 +1,3 @@
-/*
- * Client-side JS logic goes here
- * jQuery is already loaded
- * Reminder: Use (and do all your DOM work in) jQuery's document ready function
- */
-
-
-const data = [
-  {
-    "user": {
-      "name": "Newton",
-      "avatars": "https://i.imgur.com/73hZDYK.png"
-      ,
-      "handle": "@SirIsaac"
-    },
-    "content": {
-      "text": "If I have seen further it is by standing on the shoulders of giants"
-    },
-    "created_at": 1461116232227
-  },
-  {
-    "user": {
-      "name": "Descartes",
-      "avatars": "https://i.imgur.com/nlhLi3I.png",
-      "handle": "@rd" },
-    "content": {
-      "text": "Je pense , donc je suis"
-    },
-    "created_at": 1461113959088
-  }
-]
 
 //HELPER FUNCTIONS
 
@@ -37,8 +6,7 @@ const escape =  function(str) {
   let div = document.createElement('div');
   div.appendChild(document.createTextNode(str));
   return div.innerHTML;
-}
-
+};
 
 // render each tweet form database
 
@@ -72,9 +40,8 @@ const createTweetElement = function (tweetObj) {
     </article>
     `;
 
-    return tweetEL;
-
-}
+  return tweetEL;
+};
 
 const renderTweets = function(tweets) {
   // loops through tweets
@@ -85,8 +52,8 @@ const renderTweets = function(tweets) {
 
     // takes return value and appends it to the tweets container
     $("#tweets").prepend(newTweet);
-  }
-}
+  };
+};
 
 // function to make a GET requests and load the tweet
 const loadTweets = function () {
@@ -100,14 +67,12 @@ const loadTweets = function () {
     })
     .fail(() => {
       console.log("There was an error getting tweets")
-    })
+    });
 
-}
+};
 
 
 $(document).ready(function() {
-
-
 
   loadTweets();
 
@@ -132,7 +97,7 @@ $(document).ready(function() {
       return errorMsg.text("You passed the character limit!")
     } else {
       $("#err").hide();
-    }
+    };
     
     // Ajax submission post method
     $.ajax({
@@ -160,7 +125,7 @@ $(document).ready(function() {
       })
       .always(() => {
         console.log("Request submitted")
-      }) 
+      });
 
-  })
-})
+  });
+});

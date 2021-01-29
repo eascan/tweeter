@@ -14,20 +14,13 @@ $(document).ready(function() {
     const maxChar = 140;
     
   
-// if input over limit, counter turns red
+    // if input over limit, counter turns red
     if (userInput <= maxChar) {
       counter.removeClass("red");
       counter.text(decreasingVal)
 
     } else if (userInput > maxChar) {
       counter.addClass("red").text(decreasingVal);
-    } 
-    // return counter.text() - counter.val();
-    // console.log(counter.text())
-
-  })
-
-
-
-
+    };
+  });
 });
